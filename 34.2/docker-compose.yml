@@ -2,6 +2,7 @@ version: "3"
 services:
   api:
     image: demo4
+    container_name: my-name
     ports:
     - 3004:3004
     volumes:
@@ -19,5 +20,10 @@ volumes:
 
 
 
+# if we have network myNetwork and connect to it
+#networks:
+#  default:
+#    external: true
+#    name: myNetwork
 
-#docker run --name api -d -p 3000:3000 -v data:/opt/app/data --network myNetwork demo4
+    
