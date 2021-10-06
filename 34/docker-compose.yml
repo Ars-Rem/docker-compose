@@ -1,0 +1,23 @@
+version: "3"
+services:
+  api:
+    image: demo4
+    ports:
+    - 3004:3004
+    volumes:
+    - data:/opt/app/data
+    networks:
+    - myNetwork
+
+    
+  networks:
+    myNetwork:
+      driver: bridge
+
+  volumes:
+    data: {}
+  
+
+
+
+#docker run --name api -d -p 3000:3000 -v data:/opt/app/data --network myNetwork demo4
