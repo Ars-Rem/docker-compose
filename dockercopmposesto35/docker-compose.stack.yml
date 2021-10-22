@@ -28,6 +28,6 @@ networks:
   myNetwork:
     driver: overlay
 
-secret:
+secrets:
   api.env:
     external: true
