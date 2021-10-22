@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  api:
+    image: localhost:5000/api:latest
+    restart: always
+    secrets:
+    - source: api.env
+      target: /opt/app/.env
+    networks:
+    - myNetwork
+    ports:
+    - 3002:3000
+#    profiles: ["backend"]
+    depends_on:
+    - rmq
+
+  rmq:
+    image: rabbitmq:3-management
+    container_name: rmq
+    restart: always
+    networks:
+    - myNetwork
+    environment: 
+    - RABBITMQ_DEFAULT_USER=admin
+    - RABBITMQ_DEFAULT_PASS=admin
+   
+networks:
+  myNetwork:
+    driver: overlay
+
+secret:
+  api.env:
+    external: true
